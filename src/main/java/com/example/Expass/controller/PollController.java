@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import com.example.Expass.manager.PollManager;
 
 import java.util.Collection;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("/polls")
@@ -23,7 +24,7 @@ public class PollController {
 
     // Fetch a single poll by ID
     @GetMapping("/{pollId}")
-    public Poll getPoll(@PathVariable Long pollId) {
+    public Poll getPoll(@PathVariable UUID pollId) {
         return pollManager.getPoll(pollId);
     }
 
@@ -41,14 +42,14 @@ public class PollController {
 
     // Update an existing poll
     @PutMapping("/{pollId}")
-    public Poll updatePoll(@PathVariable Long pollId, @RequestBody Poll updatedPoll) {
+    public Poll updatePoll(@PathVariable UUID pollId, @RequestBody Poll updatedPoll) {
         pollManager.addPoll(pollId, updatedPoll);
         return updatedPoll;
     }
 
     // Delete a poll
     @DeleteMapping("/{pollId}")
-    public ResponseEntity<String> deletePoll(@PathVariable Long pollId) {
+    public ResponseEntity<String> deletePoll(@PathVariable UUID pollId) {
         pollManager.removePoll(pollId);
         return ResponseEntity.ok("Poll deleted successfully");
     }

@@ -9,65 +9,66 @@ import org.springframework.stereotype.Component;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.UUID;
 
 @Component
 
 public class PollManager {
-    private Map<Long, User> users = new HashMap<>();
-    private Map<Long, Poll> polls = new HashMap<>();
-    private Map<Long, Vote> votes = new HashMap<>();
-    private Map<Long, VoteOption> voteOptions = new HashMap<>();
+    private Map<UUID, User> users = new HashMap<>();
+    private Map<UUID, Poll> polls = new HashMap<>();
+    private Map<UUID, Vote> votes = new HashMap<>();
+    private Map<UUID, VoteOption> voteOptions = new HashMap<>();
 
     // Methods to manage Users
-    public void addUser(Long userID, User user) {
+    public void addUser(UUID userID, User user) {
         users.put(userID, user);
     }
 
-    public User getUser(Long userID) {
+    public User getUser(UUID userID) {
         return users.get(userID);
     }
 
-    public void removeUser(Long userID) {
+    public void removeUser(UUID userID) {
         users.remove(userID);
     }
 
     // Methods to manage Polls
-    public void addPoll(Long pollId, Poll poll) {
+    public void addPoll(UUID pollId, Poll poll) {
         polls.put(pollId, poll);
     }
 
-    public Poll getPoll(Long pollId){
+    public Poll getPoll(UUID pollId){
         return polls.get(pollId);
     }
 
-    public void removePoll(Long pollId) {
+    public void removePoll(UUID pollId) {
         polls.remove(pollId);
         votes.entrySet().removeIf(entry -> entry.getValue().getPollId().equals(pollId));
     }
 
     // Methods to manage Votes
-    public void addVote(Long voteId, Vote vote) {
+    public void addVote(UUID voteId, Vote vote) {
         votes.put(voteId, vote);
     }
 
-    public Vote getVote(Long voteId) {
+    public Vote getVote(UUID voteId) {
         return votes.get(voteId);
     }
 
-    public void removeVote(Long voteId) {
+    public void removeVote(UUID voteId) {
         votes.remove(voteId);
     }
 
     // Methods to manage VoteOptions
-    public void addVoteOption(Long voteOptionId, VoteOption voteOption) {
+    public void addVoteOption(UUID voteOptionId, VoteOption voteOption) {
         voteOptions.put(voteOptionId, voteOption);
     }
 
-    public VoteOption getVoteOption(Long voteOptionId) {
+    public VoteOption getVoteOption(UUID voteOptionId) {
         return voteOptions.get(voteOptionId);
     }
 
-    public void removeVoteOption(Long voteOptionId) {
+    public void removeVoteOption(UUID voteOptionId) {
         voteOptions.remove(voteOptionId);
     }
 
@@ -89,11 +90,11 @@ public class PollManager {
     }
 
     // Methods to check if a User or Poll exists
-    public boolean isUserExist(Long userId) {
+    public boolean isUserExist(UUID userId) {
         return users.containsKey(userId);
     }
 
-    public boolean isPollExist(Long pollId) {
+    public boolean isPollExist(UUID pollId) {
         return polls.containsKey(pollId);
     }
 }

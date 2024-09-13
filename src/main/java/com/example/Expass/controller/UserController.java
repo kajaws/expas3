@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("/users")
@@ -22,7 +23,7 @@ public class UserController {
 
     // Fetch a single user by ID
     @GetMapping("/{userId}")
-    public User getUser(@PathVariable Long userId) {
+    public User getUser(@PathVariable UUID userId) {
         return pollManager.getUser(userId);
     }
 
@@ -35,14 +36,14 @@ public class UserController {
 
     // Update an existing user
     @PutMapping("/{userId}")
-    public User updateUser(@PathVariable Long userId, @RequestBody User updatedUser) {
+    public User updateUser(@PathVariable UUID userId, @RequestBody User updatedUser) {
         pollManager.addUser(userId, updatedUser);
         return updatedUser;
     }
 
     // Delete a user
     @DeleteMapping("/{userId}")
-    public void deleteUser(@PathVariable Long userId) {
+    public void deleteUser(@PathVariable UUID userId) {
         pollManager.removeUser(userId);
     }
 

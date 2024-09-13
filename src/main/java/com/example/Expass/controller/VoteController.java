@@ -8,6 +8,7 @@ import com.example.Expass.manager.PollManager;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("/votes")
@@ -24,7 +25,7 @@ public class VoteController {
 
     // Fetch a single vote by ID
     @GetMapping("/{voteId}")
-    public Vote getVote(@PathVariable Long voteId) {
+    public Vote getVote(@PathVariable UUID voteId) {
         return pollManager.getVote(voteId);
     }
 
@@ -42,7 +43,7 @@ public class VoteController {
 
     // Update an existing vote
     @PutMapping("/{voteId}")
-    public Vote updateVote(@PathVariable Long voteId, @RequestBody Vote updatedVote) {
+    public Vote updateVote(@PathVariable UUID voteId, @RequestBody Vote updatedVote) {
         Vote existingVote = pollManager.getVote(voteId);
         if (existingVote != null && existingVote.getUserId().equals(updatedVote.getUserId())) {
             pollManager.addVote(voteId, updatedVote);
@@ -55,13 +56,13 @@ public class VoteController {
 
     // Delete a vote
     @DeleteMapping("/{voteId}")
-    public void deleteVote(@PathVariable Long voteId) {
+    public void deleteVote(@PathVariable UUID voteId) {
         pollManager.removeVote(voteId);
     }
 
     // Get votes by poll id
     @GetMapping("/poll/{pollId}")
-    public List<Vote> getVotesByPollId(@PathVariable Long pollId) {
+    public List<Vote> getVotesByPollId(@PathVariable UUID pollId) {
         return pollManager.getVotes().stream().filter(vote -> vote.getPollId().equals(pollId)).toList();
     }
 

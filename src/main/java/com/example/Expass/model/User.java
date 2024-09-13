@@ -1,13 +1,13 @@
 package com.example.Expass.model;
 
 
+import java.util.UUID;
+
 public class User {
     private String username;
     private String email;
-    private Long userId;
+    private UUID userId = UUID.randomUUID();
 
-
-    // Default constructer
     public User() {}
 
     // Getters and Setters
@@ -27,14 +27,9 @@ public class User {
         this.email = email;
     }
 
-    public Long getUserId() {
+    public UUID getUserId() {
         return userId;
     }
-
-    public void setUserId(Long userId) {
-        this.userId = userId;
-    }
-
 }
 
 

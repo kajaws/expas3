@@ -1,11 +1,15 @@
 package com.example.Expass.model;
 
+import java.util.UUID;
+
 public class VoteOption {
     private String caption;
     private int presentationOrder;
-    private Long voteOptionId;
+    private UUID voteOptionId = UUID.randomUUID();
 
     public VoteOption() {}
+
+    // Getters and Setters
 
     public String getCaption() {
         return caption;
@@ -23,11 +27,7 @@ public class VoteOption {
         this.presentationOrder = presentationOrder;
     }
 
-    public Long getVoteOptionId() {
+    public UUID getVoteOptionId() {
         return voteOptionId;
-    }
-
-    public void setVoteOptionId(Long voteOptionId) {
-        this.voteOptionId = voteOptionId;
     }
 }

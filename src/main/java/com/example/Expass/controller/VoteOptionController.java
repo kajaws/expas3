@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("/voteOptions")
@@ -22,7 +23,7 @@ public class VoteOptionController {
 
     // Fetch a single vote option by ID
     @GetMapping("/{voteOptionId}")
-    public VoteOption getVoteOption(@PathVariable Long voteOptionId) {
+    public VoteOption getVoteOption(@PathVariable UUID voteOptionId) {
         return pollManager.getVoteOption(voteOptionId);
     }
 
@@ -35,14 +36,14 @@ public class VoteOptionController {
 
     // Update an existing vote option
     @PutMapping("/{voteOptionId}")
-    public VoteOption updateVoteOption(@PathVariable Long voteOptionId, @RequestBody VoteOption updatedVoteOption) {
+    public VoteOption updateVoteOption(@PathVariable UUID voteOptionId, @RequestBody VoteOption updatedVoteOption) {
         pollManager.addVoteOption(voteOptionId, updatedVoteOption);
         return updatedVoteOption;
     }
 
     // Delete a vote option
     @DeleteMapping("/{voteOptionId}")
-    public void deleteVoteOption(@PathVariable Long voteOptionId) {
+    public void deleteVoteOption(@PathVariable UUID voteOptionId) {
         pollManager.removeVoteOption(voteOptionId);
     }
 
