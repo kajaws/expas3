@@ -3,7 +3,6 @@ POST http://localhost:8080/users
 Content-Type: application/json
 
 {
-  "userId": 1,
   "username": "user1",
   "email": "user1@example.com"
 }
@@ -20,7 +19,6 @@ POST http://localhost:8080/users
 Content-Type: application/json
 
 {
-  "userId": 2,
   "username": "user2",
   "email": "user2@example.com"
 }
@@ -37,11 +35,10 @@ POST http://localhost:8080/polls
 Content-Type: application/json
 
 {
-  "pollId": 1,
-  "userId": 1,
   "question": "What is your favorite color?",
   "publishedAt": "2024-09-03T12:00:00Z",
   "validUntil": "2024-09-10T12:00:00Z",
+  "userId": "USER1_ID_PLACEHOLDER",
   "voteOption": [
     {"voteOptionId": 1, "caption":  "Red", "presentationOrder":  1},
     {"voteOptionId": 2, "caption":  "Green", "presentationOrder":  2},
@@ -62,10 +59,9 @@ Content-Type: application/json
 
 {
   "publishedAt": "2024-09-03T12:00:00Z",
-  "voteId": 1,
-  "userId": 2,
-  "pollId": 1,
-  "voteOptionId": 3
+  "userId": "USER2_ID_PLACEHOLDER",
+  "pollId": "POLL_ID_PLACEHOLDER",
+  "voteOptionId": "VOTE_OPTION_ID_PLACEHOLDER"
 }
 
 ###
@@ -81,10 +77,9 @@ Content-Type: application/json
 
 {
   "publishedAt": "2024-09-03T12:00:00Z",
-  "voteId": 1,
-  "userId": 2,
-  "pollId": 1,
-  "voteOptionId": 1
+  "userId": "USER2_ID_PLACEHOLDER",
+  "pollId": "POLL_ID_PLACEHOLDER",
+  "voteOptionId": "VOTE_OPTION_ID_PLACEHOLDER"
 }
 
 ###
