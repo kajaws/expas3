@@ -1,9 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.example.Expass.client.PollAppTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2024-09-13T06:40:33" hostname="Kajas-MacBook-Pro.local" time="0.592">
+<testsuite name="com.example.Expass.client.PollAppTest" tests="1" skipped="0" failures="1" errors="0" timestamp="2024-09-13T08:34:13" hostname="Kajas-MacBook-Pro.local" time="0.548">
   <properties/>
-  <testcase name="testScenarioFlow()" classname="com.example.Expass.client.PollAppTest" time="0.592"/>
-  <system-out><![CDATA[08:40:32.474 [Test worker] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [com.example.Expass.client.PollAppTest]: PollAppTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-08:40:32.532 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration com.example.Expass.ExpassApplication for test class com.example.Expass.client.PollAppTest
+  <testcase name="testScenarioFlow()" classname="com.example.Expass.client.PollAppTest" time="0.548">
+    <failure message="java.lang.AssertionError: Status expected:&lt;200&gt; but was:&lt;400&gt;" type="java.lang.AssertionError">java.lang.AssertionError: Status expected:&lt;200&gt; but was:&lt;400&gt;
+	at org.springframework.test.util.AssertionErrors.fail(AssertionErrors.java:59)
+	at org.springframework.test.util.AssertionErrors.assertEquals(AssertionErrors.java:122)
+	at org.springframework.test.web.servlet.result.StatusResultMatchers.lambda$matcher$9(StatusResultMatchers.java:637)
+	at org.springframework.test.web.servlet.MockMvc$1.andExpect(MockMvc.java:214)
+	at com.example.Expass.client.PollAppTest.testScenarioFlow(PollAppTest.java:26)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+</failure>
+  </testcase>
+  <system-out><![CDATA[10:34:12.899 [Test worker] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [com.example.Expass.client.PollAppTest]: PollAppTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+10:34:12.956 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration com.example.Expass.ExpassApplication for test class com.example.Expass.client.PollAppTest
 
   .   ____          _            __ _ _
  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
@@ -14,12 +25,50 @@
 
  :: Spring Boot ::                (v3.3.3)
 
-2024-09-13T08:40:32.704+02:00  INFO 46047 --- [Expass] [    Test worker] com.example.Expass.client.PollAppTest    : Starting PollAppTest using Java 21 with PID 46047 (started by kajaskramo in /Users/kajaskramo/Library/CloudStorage/OneDrive-Personlig/Programvareutvikling/Semester 1/DAT250/expass2)
-2024-09-13T08:40:32.704+02:00  INFO 46047 --- [Expass] [    Test worker] com.example.Expass.client.PollAppTest    : No active profile set, falling back to 1 default profile: "default"
-2024-09-13T08:40:33.175+02:00  INFO 46047 --- [Expass] [    Test worker] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
-2024-09-13T08:40:33.175+02:00  INFO 46047 --- [Expass] [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
-2024-09-13T08:40:33.176+02:00  INFO 46047 --- [Expass] [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 0 ms
-2024-09-13T08:40:33.189+02:00  INFO 46047 --- [Expass] [    Test worker] com.example.Expass.client.PollAppTest    : Started PollAppTest in 0.594 seconds (process running for 1.164)
+2024-09-13T10:34:13.119+02:00  INFO 47343 --- [Expass] [    Test worker] com.example.Expass.client.PollAppTest    : Starting PollAppTest using Java 21 with PID 47343 (started by kajaskramo in /Users/kajaskramo/Library/CloudStorage/OneDrive-Personlig/Programvareutvikling/Semester 1/DAT250/expass3)
+2024-09-13T10:34:13.120+02:00  INFO 47343 --- [Expass] [    Test worker] com.example.Expass.client.PollAppTest    : No active profile set, falling back to 1 default profile: "default"
+2024-09-13T10:34:13.591+02:00  INFO 47343 --- [Expass] [    Test worker] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2024-09-13T10:34:13.591+02:00  INFO 47343 --- [Expass] [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2024-09-13T10:34:13.592+02:00  INFO 47343 --- [Expass] [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2024-09-13T10:34:13.608+02:00  INFO 47343 --- [Expass] [    Test worker] com.example.Expass.client.PollAppTest    : Started PollAppTest in 0.59 seconds (process running for 1.164)
+2024-09-13T10:34:14.148+02:00  WARN 47343 --- [Expass] [    Test worker] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.http.converter.HttpMessageNotReadableException: JSON parse error: Cannot deserialize value of type `java.util.UUID` from String "1": UUID has to be represented by standard 36-char representation]
+
+MockHttpServletRequest:
+      HTTP Method = POST
+      Request URI = /users
+       Parameters = {}
+          Headers = [Content-Type:"application/json;charset=UTF-8", Content-Length:"66"]
+             Body = { "userId": 1, "username": "user1", "email": "user1@example.com" }
+    Session Attrs = {}
+
+Handler:
+             Type = com.example.Expass.controller.UserController
+           Method = com.example.Expass.controller.UserController#createUser(User)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = org.springframework.http.converter.HttpMessageNotReadableException
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 400
+    Error message = null
+          Headers = []
+     Content type = null
+             Body = 
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
 ]]></system-out>
   <system-err><![CDATA[WARNING: A Java agent has been loaded dynamically (/Users/kajaskramo/.gradle/caches/modules-2/files-2.1/net.bytebuddy/byte-buddy-agent/1.14.19/154da3a65b4f4a909d3e5bdec55d1b2b4cbb6ce1/byte-buddy-agent-1.14.19.jar)
 WARNING: If a serviceability tool is in use, please run with -XX:+EnableDynamicAgentLoading to hide this warning

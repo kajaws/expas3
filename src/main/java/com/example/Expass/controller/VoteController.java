@@ -32,13 +32,22 @@ public class VoteController {
     // Create a new vote
     @PostMapping
     public Vote createVote(@RequestBody Vote vote) {
-       if(pollManager.isUserExist(vote.getUserId()) && pollManager.isPollExist(vote.getPollId())) {
-           pollManager.addVote(vote.getVoteId(), vote);
-              return vote;
-       }
-       else {
-           throw new IllegalArgumentException("User or Poll does not exist");
-       }
+        if (pollManager.isUserExist(vote.getUserId()) && pollManager.isPollExist(vote.getPollId())) {
+            Vote existingVote = pollManager.getVoteByUserAndPoll(vote.getUserId(), vote.getPollId());
+
+            if (existingVote != null) {
+                existingVote.setVoteOptionId(vote.getVoteOptionId());
+                existingVote.setPublishedAt(vote.getPublishedAt());
+                return updateVote(existingVote.getVoteId(), existingVote);
+            }
+            else {
+                pollManager.addVote(vote.getVoteId(), vote);
+                return vote;
+            }
+        }
+        else {
+            throw new IllegalArgumentException("User or Poll does not exist");
+        }
     }
 
     // Update an existing vote

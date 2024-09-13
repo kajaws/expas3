@@ -48,6 +48,12 @@ public class PollManager {
 
     // Methods to manage Votes
     public void addVote(UUID voteId, Vote vote) {
+        for (Vote existingVote : votes.values()) {
+            if (existingVote.getUserId().equals(vote.getUserId()) && existingVote.getPollId().equals(vote.getPollId())) {
+                existingVote.setVoteOptionId(vote.getVoteOptionId());
+                existingVote.setPublishedAt(vote.getPublishedAt());
+            }
+        }
         votes.put(voteId, vote);
     }
 
@@ -96,5 +102,14 @@ public class PollManager {
 
     public boolean isPollExist(UUID pollId) {
         return polls.containsKey(pollId);
+    }
+
+    public Vote getVoteByUserAndPoll(UUID userId, UUID pollId) {
+        for (Vote vote : votes.values()) {
+            if (vote.getUserId().equals(userId) && vote.getPollId().equals(pollId)) {
+                return vote;
+            }
+        }
+        return null;
     }
 }
