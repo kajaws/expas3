@@ -71,7 +71,7 @@
 
 <div>
     <!-- Poll Creation Section -->
-    <PollCreation on:pollCreated={fetchPolls} />
+<!--    <PollCreation on:pollCreated={fetchPolls} />-->
 
     <!-- Voting Section -->
     <div>

@@ -1,9 +1,11 @@
-<!-- App.svelte -->
 <script>
-    import PollVoting from './components/PollVoting.svelte'; // Adjust the path if necessary
+    import CreateUserComponent from './components/CreateUserComponent.svelte';
+    import CreatePollComponent from './components/PollCreation.svelte';
+    import VoteComponent from './components/PollVoting.svelte';
 </script>
 
 <main>
-    <PollVoting />
+    <CreateUserComponent />
+    <CreatePollComponent />
+    <VoteComponent />
 </main>
-
