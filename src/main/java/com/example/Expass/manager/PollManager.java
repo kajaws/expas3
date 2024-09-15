@@ -112,4 +112,17 @@ public class PollManager {
         }
         return null;
     }
+
+    public void voteOnOption(UUID pollId, String optionId) {
+        Poll poll = getPoll(pollId);
+        if (poll != null) {
+            for (VoteOption option : poll.getOptions()) {
+                if (option.getVoteOptionId().equals(optionId)) {
+                    option.incrementVoteCount();
+                    break;
+                }
+            }
+        }
+    }
+
 }

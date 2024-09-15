@@ -1,11 +1,13 @@
 package com.example.Expass.controller;
 
 import com.example.Expass.model.Poll;
+import com.example.Expass.model.VoteOption;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import com.example.Expass.manager.PollManager;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.UUID;
 
@@ -32,14 +34,18 @@ public class PollController {
     // Create a new poll
     @PostMapping
     public Poll createPoll(@RequestBody Poll poll) {
-        if (pollManager.isUserExist(poll.getUserId())) {
+        if (poll.getUserId() == null || pollManager.isUserExist(poll.getUserId())) {
+            if (poll.getOptions() == null) {
+                poll.setOptions(new ArrayList<>()); // Initialize options list if null
+            }
             pollManager.addPoll(poll.getPollId(), poll);
             return poll;
-        }
-        else {
+        } else {
             throw new IllegalArgumentException("User does not exist");
         }
     }
+
+
 
     // Update an existing poll
     @PutMapping("/{pollId}")
@@ -47,6 +53,18 @@ public class PollController {
         pollManager.addPoll(pollId, updatedPoll);
         return updatedPoll;
     }
+
+    @PostMapping("/{pollId}/vote")
+    public Poll voteOnPoll(@PathVariable UUID pollId, @RequestBody String optionId) {
+        Poll poll = pollManager.getPoll(pollId);
+        if (poll != null) {
+            pollManager.voteOnOption(pollId, optionId);
+            return pollManager.getPoll(pollId); // Return the updated poll
+        } else {
+            throw new IllegalArgumentException("Poll not found");
+        }
+    }
+
 
     // Delete a poll
     @DeleteMapping("/{pollId}")

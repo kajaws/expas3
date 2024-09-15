@@ -1,6 +1,7 @@
 package com.example.Expass.model;
 
 import java.time.Instant;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -10,7 +11,7 @@ public class Poll {
     private String question;
     private Instant publishedAt;
     private Instant validUntil;
-    private List<VoteOption> voteOption;
+    private List<VoteOption> options; // Rename and initialize
 
     public Poll() {}
 
@@ -51,12 +52,11 @@ public class Poll {
         this.validUntil = validUntil;
     }
 
-    public List<VoteOption> getVoteOption() {
-        return voteOption;
+    public List<VoteOption> getOptions() {
+        return options;
     }
 
-    public void setVoteOption(List<VoteOption> voteOption) {
-        this.voteOption = voteOption;
+    public void setOptions(List<VoteOption> options) {
+        this.options = options;
     }
-
 }
