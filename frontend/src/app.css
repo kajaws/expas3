@@ -1,1 +1,68 @@
+/* app.css */
 
+/* Centering content globally */
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    margin: 0; /* Remove default margin */
+    font-family: Arial, sans-serif;
+}
+
+/* New container to center the entire app */
+.outer-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+/* Styling for the main title in the app (e.g., "PollApp") */
+h1 {
+    color: rebeccapurple; /* Set color for the main title */
+    margin-bottom: 20px;
+    text-align: center; /* Center align the title */
+}
+
+/* Styling for all subtitles (e.g., "Create User", "Create Poll") */
+h2 {
+    color: mediumpurple; /* Set color for subtitles */
+    margin-bottom: 10px;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: mediumpurple;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+button:hover {
+    background-color: darkviolet;
+}
+
+input, select {
+    padding: 10px;
+    margin: 5px 0;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.poll-voting-container,
+.poll-creation-container,
+.create-user-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}

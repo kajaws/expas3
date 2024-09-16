@@ -49,10 +49,12 @@
         <input type="text" bind:value={pollQuestion} id="pollQuestion" />
     </div>
 
-    <h3>Options</h3>
-    {#each options as option, index}
-        <input type="text" bind:value={options[index]} placeholder="Option" />
-    {/each}
-    <button on:click={addOption}>Add Option</button>
-    <button on:click={createPoll}>Create Poll</button>
+    <div>
+        <label for="options">Options:</label>
+        {#each options as index}
+            <input type="text" bind:value={options[index]} placeholder="Option" />
+        {/each}
+        <button on:click={addOption}>Add Option</button>
+        <button on:click={createPoll}>Create Poll</button>
+    </div>
 </div>
